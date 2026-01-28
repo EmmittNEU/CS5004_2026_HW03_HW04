@@ -19,6 +19,17 @@ public class HourlyEmployee {
     /** Holds the pre-tax deductions of the Employee. */
     private double pretaxDeductions;
 
+    /**
+     * The constructor for the Hourly Employee class.
+     *
+     * @param name the name of Hourly Employee.
+     * @param id the id of the Hourly Employee.
+     * @param payRate the pay rate of the Hourly Employee.
+     * @param ytdEarnings the year to date (ytd) earnings of the Hourly Employee.
+     * @param ytdTaxesPaid the year to date (ytd) taxes paid of the Hourly Employee.
+     * @param pretaxDeductions the pre-tax deductions of the Hourly Employee.
+     * @throws IllegalArgumentException if the pay rate is negative.
+     */
     public HourlyEmployee(String name,
                           String id,
                           double payRate,
