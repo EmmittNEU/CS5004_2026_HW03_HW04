@@ -1,6 +1,6 @@
 package student;
 
-public class SalaryEmployee {
+public class SalaryEmployee implements IEmployee {
     /** Holds the name of the Employee. */
     private String name;
 
@@ -45,5 +45,50 @@ public class SalaryEmployee {
         this.ytdEarnings = ytdEarnings;
         this.ytdTaxesPaid = ytdTaxesPaid;
         this.pretaxDeductions = pretaxDeductions;
+    }
+
+    @Override
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public String getID() {
+        return "";
+    }
+
+    @Override
+    public double getPayRate() {
+        return 0;
+    }
+
+    @Override
+    public String getEmployeeType() {
+        return "";
+    }
+
+    @Override
+    public double getYTDEarnings() {
+        return 0;
+    }
+
+    @Override
+    public double getYTDTaxesPaid() {
+        return 0;
+    }
+
+    @Override
+    public double getPretaxDeductions() {
+        return 0;
+    }
+
+    @Override
+    public IPayStub runPayroll(double hoursWorked) {
+        return null;
+    }
+
+    @Override
+    public String toCSV() {
+        return "";
     }
 }
