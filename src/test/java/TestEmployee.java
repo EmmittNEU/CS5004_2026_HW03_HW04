@@ -415,4 +415,73 @@ public class TestEmployee {
         assertEquals(1132.50, salaryEmployee.getYTDTaxesPaid(), 0.01);
     }
 
+    // ========== CSV Tests ==========
+
+    /**
+     * Test of HourlyEmployee's information being properly converted to the correct CSV format (7 parts).
+     */
+    @Test
+    public void testHourlyEmployee_toCSV_Format() {
+        String csv = hourlyEmployee.toCSV();
+        String[] parts = csv.split(",");
+        assertEquals(7, parts.length);
+    }
+
+    /**
+     * Test of HourlyEmployee's content being properly converted to CSV format.
+     */
+    @Test
+    public void testHourlyEmployee_toCSV_Content() {
+        String csv = hourlyEmployee.toCSV();
+        assertTrue(csv.contains("Hourly"));
+        assertTrue(csv.contains("John Doe"));
+        assertTrue(csv.contains("E001"));
+        assertTrue(csv.contains("20.0") || csv.contains("20.00"));
+    }
+
+    /**
+     * Test of HourlyEmployee's content being properly converted to CSV format in the correct order.
+     */
+    @Test
+    public void testHourlyEmployee_toCSV_CorrectOrder() {
+        // Format: employee_type,name,ID,payRate,pretaxDeductions,YTDEarnings,YTDTaxesPaid
+        String csv = hourlyEmployee.toCSV();
+        String[] parts = csv.split(",");
+        assertEquals("Hourly", parts[0]);
+        assertEquals("John Doe", parts[1]);
+        assertEquals("E001", parts[2]);
+    }
+
+    /**
+     * Test of SalaryEmployee's information being properly converted to the correct CSV format (7 parts).
+     */
+    @Test
+    public void testSalaryEmployee_toCSV_Format() {
+        String csv = salaryEmployee.toCSV();
+        String[] parts = csv.split(",");
+        assertEquals(7, parts.length);
+    }
+
+    /**
+     * Test of SalaryEmployee's content being properly converted to CSV format.
+     */
+    @Test
+    public void testSalaryEmployee_toCSV_Content() {
+        String csv = salaryEmployee.toCSV();
+        assertTrue(csv.contains("Salary"));
+        assertTrue(csv.contains("Jane Smith"));
+        assertTrue(csv.contains("E002"));
+        assertTrue(csv.contains("60000"));
+    }
+
+    /**
+     * Test of SalaryEmployee's content being properly converted to CSV format in the correct order.
+     */
+    @Test
+    public void testEmployee_toCSV_AfterPayroll_UpdatedYTD() {
+        hourlyEmployee.runPayroll(40.0);
+        String csv = hourlyEmployee.toCSV();
+        assertTrue(csv.contains("618.8") || csv.contains("618.80"));
+        assertTrue(csv.contains("181.2") || csv.contains("181.20"));
+    }
 }
