@@ -3,9 +3,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import student.HourlyEmployee;
-import student.IPayStub;
+import student.PayStub;
 import student.SalaryEmployee;
 
+/**
+ * A test of the Employee classes (Hourly and Salary).
+ */
 public class TestEmployee {
     private HourlyEmployee hourlyEmployee;
     private SalaryEmployee salaryEmployee;

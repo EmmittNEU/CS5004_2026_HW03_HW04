@@ -3,6 +3,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import student.TimeCard;
 
+/**
+ * A test of the TimeCard class.
+ */
 public class TestTimeCard {
 
     /**

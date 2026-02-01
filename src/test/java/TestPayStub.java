@@ -3,6 +3,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import student.PayStub;
 
+/**
+ * A test of the PayStub class.
+ */
 public class TestPayStub {
 
     /**
