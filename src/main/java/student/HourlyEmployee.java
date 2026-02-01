@@ -49,22 +49,22 @@ public class HourlyEmployee implements IEmployee{
 
     @Override
     public String getName() {
-        return "";
+        return this.name;
     }
 
     @Override
     public String getID() {
-        return "";
+        return this.id;
     }
 
     @Override
     public double getPayRate() {
-        return 0;
+        return this.payRate;
     }
 
     @Override
     public String getEmployeeType() {
-        return "";
+        return "Hourly";
     }
 
     @Override

@@ -9,7 +9,7 @@ If you are using mermaid markup to generate your class diagrams, you may edit th
 
 Include a UML class diagram of your initial design for this assignment. If you are using the mermaid markdown, you may include the code for it here. For a reminder on the mermaid syntax, you may go [here](https://mermaid.js.org/syntax/classDiagram.html)
 
-
+[UML Draft Link](https://drive.google.com/file/d/1cPBkBl4Q3gqX_vvn7l2gJjwYyN7wRc0R/view?usp=sharing)
 
 
 
@@ -26,11 +26,83 @@ Write a test (in english) that you can picture for the class diagram you have cr
 > 5. Repeat steps 2-4 until you have all the tests passing/fully built program
 
 You should feel free to number your brainstorm. 
-
-1. Test that the `Employee` class properly returns `name` from `getName()`
-2. Test that the `Employee` class properly returns `id` from `getId()`
-3. continue to add your brainstorm here (you don't need to super formal - this is a brainstorm) - yes, you can change the bullets above to something that fits your design.
-
+1. Test that the `Employee` classes objects can be created will appropriate parameters
+2. Test that the `Employee` classes throws an `IllegalArgumentException` when the pay rate is less than or equal to 0
+3. Test that the `Employee` classes does not throw an error when given very low (0.01) or very high values
+4. Test that the `Employee` classes throws an `IllegalArgumentException` when the `name` is null or blank
+5. Test that the `Employee` classes throws an `IllegalArgumentException` when the `id` is null or blank
+6. Test that the `Employee` classes throw an `IllegalArguementException` when `ytdEarnings` is negative
+7. Test that the `Employee` classes throw an `IllegalArguementException` when `ytdTaxesPaid` is negative
+8. Test that the `Employee` classes throw an `IllegalArguementException` when `pretaxDeductions` is negative
+9. Test that the `Employee` classes properly returns `name` from `getName()`
+10. Test that the `Employee` classes properly returns `id` from `getId()`
+11. Test that the `Employee` classes properly returns `payRate` from `getPayRate`
+12. Test that the `Employee` classes properly returns `ytdEarnings` from `getYTDEarnings`
+13. Test that the `Employee` classes properly returns `ytdTaxesPaid` from `getYTDTaxesPaid`
+14. Test that the `Employee` classes properly returns `pretaxDeductions` from `getPretaxDeductions`
+15. Test that the `Employee` classes properly return a properly formatted `IPayStub` from `runPayroll`
+16. Test that the `Employee` classes properly sends info to CSV format from `toCSV`
+17. Test that the `Employee` classes properly output when values are 0
+18. Test that the `Employee` classes properly output when values include decimals
+19. Test that `runPayroll` behaves as expected with exactly 40 hours
+20. Test that `runPayroll` behaves as expected with more than 40 hours (overtime)
+21. Test that `runPayroll` behaves as expected with less than 40 hours
+22. Test that `runPayroll` behaves as expected with 0 hours ($0 paystub)
+23. Test that `runPayroll` has pre-tax deductions applied as expected
+24. Test that `runPayroll` has taxes applied properly
+25. Test that `ytdEarnings` are updated correctly after `runPayroll`
+26. Test that `ytdTaxesPaid` are updated correctly after `runPayroll`
+27. Test multiple consecutive `runPayroll` runs accumulate YTD correctly
+28. Test rounding to nearest cent (2 decimal places)
+29. Test that the `TimeCard` class properly returns `employeeID` from `getEmployeeID`
+30. Test that the `TimeCard` class properly returns `hoursWorked` from `getHoursWorked`
+31. Test that the `PayStub` class properly returns `pay` from `getPay`
+32. Test that the `PayStub` class properly returns `taxesPaid` from `getTaxesPaid`
+33. Test that the `PayStub` class throws an `IllegalArguementException` when initialized with a negative value
+34. Test that the `PayStub` class does not throw an `IllegalArguementException` when initialized with a value of 0
+35. Test that `toCSV` adds to the CSV file in the proper order and format
+36. Test that the `Builder` class `buildEmployeeFromCSV()` can properly build `HourlyEmployee` from valid CSV string
+37. Test that the `Builder` class `buildEmployeeFromCSV()` can properly build `SalaryEmployee` from valid CSV string
+38. Test that the `Builder` class `buildEmployeeFromCSV()` can properly work with CSV containing all fields populated
+39. Test that the `Builder` class `buildEmployeeFromCSV()` can properly work with CSV containing decimal values
+40. Test that the `Builder` class `buildEmployeeFromCSV()` will throw an `IllegalArgumentException` with malformed CSV (wrong number of fields)
+41. Test that the `Builder` class `buildEmployeeFromCSV()` will throw an `IllegalArgumentException` with invalid employee type
+42. Test that the `Builder` class `buildEmployeeFromCSV()` will throw an `IllegalArgumentException` with empty CSV string
+43. Test that the `Builder` class `buildEmployeeFromCSV()` will throw an `IllegalArgumentException` with null CSV string
+44. Test that the `Builder` class `buildEmployeeFromCSV()` employee type detection works (first field should be `Hourly` or `Salary`)
+45. Test that the `Builder` class `buildTimeCardFromCSV()` can properly build TimeCard from valid CSV string
+46. Test that the `Builder` class `buildTimeCardFromCSV()` works with decimal hours
+47. Test that the `Builder` class `buildTimeCardFromCSV()` throws an `IllegalArgumentException` with negative hours
+48. Test that the `Builder` class `buildTimeCardFromCSV()` throws an `IllegalArgumentException` with malformed CSV
+49. Test that the `Builder` class `buildTimeCardFromCSV()` throws an `IllegalArgumentException` with empty/null CSV string
+50. Test that the `FileUtil` class `readFileToList()` can read a valid file with multiple lines
+51. Test that the `FileUtil` class `readFileToList()` header line is removed
+52. Test that the `FileUtil` class `readFileToList()` can read an empty file (only header)
+53. Test that the `FileUtil` class `readFileToList()` can't read non-existent file and should throw `IllegalArguementException`
+54. Test that the `FileUtil` class `readFileToList()` can read file with various line endings
+55. Test that the `FileUtil` class `writeFile()` can write lines to new file
+56. Test that the `FileUtil` class `writeFile()` creates backup file when file exists
+57. Test that the `FileUtil` class `writeFile()` creates backup file with .bak extension
+58. Test that the `FileUtil` class `writeFile()` writes with backup=false doesn't create backup
+59. Test that the `FileUtil` class `writeFile()` handles IOException during writes
+60. Test that the `FileUtil` class `writeFile()` overwrites existing backup file
+61. Test complete payroll workflow run with sample employees and time cards
+62. Test matching employees to time cards by ID
+63. Test that employees with negative hours are skipped (no paystub added)
+64. Test that employees with 0 hours generate $0 paystubs
+65. Test that unmatched time cards are handled appropriately
+66. Test that unmatched employees are handled appropriately
+67. Test that multiple paystubs are generated correctly
+68. Test that employee file is updated with new YTD values
+69. Test that paystub file is written correctly
+70. Test default values when no arguments provided
+71. Test `-e` flag sets employee file correctly
+72. Test `-t` flag sets time card file correctly
+73. Test `-o` flag sets output file correctly
+74. Test `-h` flag prints help and exits
+75. Test invalid flag shows error and help
+76. Test missing argument value shows error
+77. Test multiple flags in combination
 
 
 ## (FINAL DESIGN): Class Diagram
