@@ -321,5 +321,98 @@ public class TestEmployee {
         assertEquals(362.40, hourlyEmployee.getYTDTaxesPaid(), 0.01);
     }
 
+    // ========== Salary Employee Payroll Tests ==========
+
+    /**
+     * Test of SalaryEmployee with payroll with negative hours returns a null.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_NegativeHours_ReturnsNull() {
+        IPayStub stub = salaryEmployee.runPayroll(-1.0);
+        assertNull(stub);
+    }
+
+    /**
+     * Test of SalaryEmployee with zero hour payroll returns 0 pay stub.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_ZeroHours_ReturnsZeroPayStub() {
+        IPayStub stub = salaryEmployee.runPayroll(0.0);
+        assertNotNull(stub);
+        assertEquals(0.0, stub.getPay(), 0.01);
+        assertEquals(0.0, stub.getTaxesPaid(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee with payroll with positive hours.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_PositiveHours() {
+        // $60000 / 24 = $2500 gross
+        // Taxes: $2500 * 0.2265 = $566.25
+        // Net: $2500 - $566.25 = $1933.75
+        IPayStub stub = salaryEmployee.runPayroll(40.0);
+        assertNotNull(stub);
+        assertEquals(1933.75, stub.getPay(), 0.01);
+        assertEquals(566.25, stub.getTaxesPaid(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee's hours not affecting pay rate.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_HoursDoNotAffectPay() {
+        IPayStub stub1 = salaryEmployee.runPayroll(40.0);
+        IPayStub stub2 = salaryEmployee.runPayroll(35.0);
+        IPayStub stub3 = salaryEmployee.runPayroll(50.0);
+
+        assertEquals(stub1.getPay(), stub2.getPay(), 0.01);
+        assertEquals(stub1.getPay(), stub3.getPay(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee payroll with pretax deductions.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_WithPretaxDeductions() {
+        SalaryEmployee emp = new SalaryEmployee("Test", "010", 60000, 0, 0, 250.00);
+        // $60000 / 24 = $2500 gross
+        // After pretax: $2500 - $250 = $2250
+        // Taxes: $2250 * 0.2265 = $509.63
+        // Net: $2250 - $509.63 = $1740.37
+        IPayStub stub = emp.runPayroll(40.0);
+        assertNotNull(stub);
+        assertEquals(1740.37, stub.getPay(), 0.01);
+        assertEquals(509.63, stub.getTaxesPaid(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee payroll with updates to ytd earnings.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_UpdatesYTDEarnings() {
+        salaryEmployee.runPayroll(40.0);
+        assertEquals(1933.75, salaryEmployee.getYTDEarnings(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee payroll with updates to ytd taxes.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_UpdatesYTDTaxes() {
+        salaryEmployee.runPayroll(40.0);
+        assertEquals(566.25, salaryEmployee.getYTDTaxesPaid(), 0.01);
+    }
+
+    /**
+     * Test of SalaryEmployee payroll with multiple pay periods that accumulate.
+     */
+    @Test
+    public void testSalaryEmployee_Payroll_MultiplePayPeriods_AccumulatesYTD() {
+        salaryEmployee.runPayroll(40.0);
+        salaryEmployee.runPayroll(40.0);
+        assertEquals(3867.50, salaryEmployee.getYTDEarnings(), 0.01);
+        assertEquals(1132.50, salaryEmployee.getYTDTaxesPaid(), 0.01);
+    }
 
 }
