@@ -20,7 +20,7 @@ public class HourlyEmployee implements IEmployee{
     private double ytdTaxesPaid;
 
     /** Holds the pre-tax deductions of the Employee. */
-    private final double pretaxDeductions;
+    private double pretaxDeductions;
 
     /**
      * The constructor for the Hourly Employee class.

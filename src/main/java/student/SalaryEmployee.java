@@ -1,14 +1,17 @@
 package student;
 
+/**
+ * A class for salary employees.
+ */
 public class SalaryEmployee implements IEmployee {
     /** Holds the name of the Employee. */
-    private String name;
+    private final String name;
 
     /** Holds the id of the Employee. */
-    private String id;
+    private final String id;
 
     /** Holds the pay rate of the Employee. */
-    private double payRate;
+    private final double payRate;
 
     /** Holds the year to date (ytd) earnings of the Employee. */
     private double ytdEarnings;
@@ -49,46 +52,88 @@ public class SalaryEmployee implements IEmployee {
 
     @Override
     public String getName() {
-        return "";
+        return this.name;
     }
 
     @Override
     public String getID() {
-        return "";
+        return this.id;
     }
 
     @Override
     public double getPayRate() {
-        return 0;
+        return this.payRate;
     }
 
     @Override
     public String getEmployeeType() {
-        return "";
+        return "Salary";
     }
 
     @Override
     public double getYTDEarnings() {
-        return 0;
+        return this.ytdEarnings;
     }
 
     @Override
     public double getYTDTaxesPaid() {
-        return 0;
+        return this.ytdTaxesPaid;
     }
 
     @Override
     public double getPretaxDeductions() {
-        return 0;
+        return this.pretaxDeductions;
     }
 
     @Override
     public IPayStub runPayroll(double hoursWorked) {
-        return null;
+        // Handling negative hours
+        if (hoursWorked < 0) {
+            return null;
+        }
+
+        // Handling zero hours
+        if (hoursWorked == 0) {
+            return new PayStub(this.name, 0.0, 0.0,
+                    this.ytdEarnings, this.ytdTaxesPaid);
+        }
+
+        // Calculating gross pay
+        double grossPay = this.payRate / 24.0;
+
+        // Applying pretax deductions
+        double afterPretax = grossPay - this.pretaxDeductions;
+
+        // Calculating taxes
+        double taxes = afterPretax * 0.2265;
+        taxes = Math.round(taxes * 100.0) / 100.0;
+
+        // Calculating net pay
+        double netPay = afterPretax - taxes;
+        netPay = Math.round(netPay * 100.0) / 100.0;
+
+        // Updating YTD values
+        this.ytdEarnings += netPay;
+        this.ytdTaxesPaid += taxes;
+
+        // Rounding YTD values
+        this.ytdEarnings = Math.round(this.ytdEarnings * 100.0) / 100.0;
+        this.ytdTaxesPaid = Math.round(this.ytdTaxesPaid * 100.0) / 100.0;
+
+        // Creating and returning pay stub
+        return new PayStub(this.name, netPay, taxes,
+                this.ytdEarnings, this.ytdTaxesPaid);
     }
 
     @Override
     public String toCSV() {
-        return "";
+        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
+                getEmployeeType(),    // "Hourly"
+                this.name,            // Employee name
+                this.id,              // Employee ID
+                this.payRate,         // Pay rate
+                this.pretaxDeductions,// Pretax deductions
+                this.ytdEarnings,     // YTD earnings
+                this.ytdTaxesPaid);   // YTD taxes paid
     }
 }
