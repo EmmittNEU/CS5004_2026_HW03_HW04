@@ -123,13 +123,20 @@ public class HourlyEmployee implements IEmployee{
         this.ytdEarnings += netPay;
         this.ytdTaxesPaid += taxes;
 
-        // Create and return PayStub (concrete class implementing IPayStub)
+        // Create and return PayStub
         return new PayStub(this.name, netPay, taxes,
                 this.ytdEarnings, this.ytdTaxesPaid);
     }
 
     @Override
     public String toCSV() {
-        return "";
+        return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
+                getEmployeeType(),    // "Hourly"
+                this.name,            // Employee name
+                this.id,              // Employee ID
+                this.payRate,         // Pay rate
+                this.pretaxDeductions,// Pretax deductions
+                this.ytdEarnings,     // YTD earnings
+                this.ytdTaxesPaid);   // YTD taxes paid
     }
 }
