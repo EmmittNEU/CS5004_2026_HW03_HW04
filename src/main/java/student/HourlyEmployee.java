@@ -1,14 +1,17 @@
 package student;
 
+/**
+ * A class for hourly employees.
+ */
 public class HourlyEmployee implements IEmployee{
     /** Holds the name of the Employee. */
-    private String name;
+    private final String name;
 
     /** Holds the id of the Employee. */
-    private String id;
+    private final String id;
 
     /** Holds the pay rate of the Employee. */
-    private double payRate;
+    private final double payRate;
 
     /** Holds the year to date (ytd) earnings of the Employee. */
     private double ytdEarnings;
@@ -17,7 +20,7 @@ public class HourlyEmployee implements IEmployee{
     private double ytdTaxesPaid;
 
     /** Holds the pre-tax deductions of the Employee. */
-    private double pretaxDeductions;
+    private final double pretaxDeductions;
 
     /**
      * The constructor for the Hourly Employee class.
@@ -47,6 +50,15 @@ public class HourlyEmployee implements IEmployee{
         this.pretaxDeductions = pretaxDeductions;
     }
 
+    /**
+     * Method to calculate the gross pay of an employee.
+     * @param hoursWorked number of hours worked by the employee.
+     * @return the gross pay of the employee.
+     */
+    public double calculateGrossPay(double hoursWorked){
+        return this.payRate * hoursWorked;
+    }
+
     @Override
     public String getName() {
         return this.name;
@@ -69,22 +81,51 @@ public class HourlyEmployee implements IEmployee{
 
     @Override
     public double getYTDEarnings() {
-        return 0;
+        return this.ytdEarnings;
     }
 
     @Override
     public double getYTDTaxesPaid() {
-        return 0;
+        return this.ytdTaxesPaid;
     }
 
     @Override
     public double getPretaxDeductions() {
-        return 0;
+        return this.pretaxDeductions;
     }
 
     @Override
     public IPayStub runPayroll(double hoursWorked) {
-        return null;
+        // Skip negative hours
+        if (hoursWorked < 0) {
+            return null;
+        }
+
+        // Handle zero hours
+        if (hoursWorked == 0) {
+            return new PayStub(this.name, 0.0, 0.0,
+                    this.ytdEarnings, this.ytdTaxesPaid);
+        }
+
+        // Calculating gross pay
+        double grossPay = calculateGrossPay(hoursWorked);
+
+        // Applying pretax deductions
+        double afterPretax = grossPay - this.pretaxDeductions;
+
+        // Calculating taxes (22.65%)
+        double taxes = Math.round(afterPretax * 0.2265 * 100.0) / 100.0;
+
+        // Calculating net pay
+        double netPay = Math.round((afterPretax - taxes) * 100.0) / 100.0;
+
+        // Update YTD values
+        this.ytdEarnings += netPay;
+        this.ytdTaxesPaid += taxes;
+
+        // Create and return PayStub (concrete class implementing IPayStub)
+        return new PayStub(this.name, netPay, taxes,
+                this.ytdEarnings, this.ytdTaxesPaid);
     }
 
     @Override
