@@ -69,7 +69,42 @@ public final class PayrollGenerator {
         // as it is invalid, but if is 0, you still generate a paystub, but the amount is 0.
 
         //YOUR CODE HERE
-      
+        for (ITimeCard timeCard : timeCardList) {
+            // Skip null time cards in the case CSV parsing failed
+            if (timeCard == null) {
+                continue;
+            }
+
+            // Get the employee ID and hours worked from the time card
+            String employeeID = timeCard.getEmployeeID();
+            double hoursWorked = timeCard.getHoursWorked();
+
+            // Find the matching employee by ID
+            IEmployee matchingEmployee = null;
+            for (IEmployee emp : employees) {
+                if (emp != null && emp.getID().equals(employeeID)) {
+                    matchingEmployee = emp;
+                    break;
+                }
+            }
+
+            // If matching employee, run their payroll
+            if (matchingEmployee != null) {
+                // Run payroll for this employee
+                // runPayroll returns null if hours < 0, skipping that pay period
+                IPayStub payStub = matchingEmployee.runPayroll(hoursWorked);
+
+                // Only add the pay stub if it's not null,
+                // meaning negative hours, which we skip
+                if (payStub != null) {
+                    payStubs.add(payStub);
+                }
+            } else {
+                // Employee not found - this could happen if there's a time card
+                // for an employee who doesn't exist in the employee file
+                System.err.println("Warning: No employee found with ID: " + employeeID);
+            }
+        }
 
          // now save out employees to a new file
 
