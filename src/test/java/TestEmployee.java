@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import student.HourlyEmployee;
-import student.PayStub;
+import student.IPayStub;
 import student.SalaryEmployee;
 
 /**
@@ -18,8 +18,8 @@ public class TestEmployee {
      */
     @BeforeEach
     public void setUp() {
-        hourlyEmployee = new HourlyEmployee("John", "H001", 20.00, 0, 0, 0);
-        salaryEmployee = new SalaryEmployee("Jane", "S002", 60000, 0, 0, 0);
+        hourlyEmployee = new HourlyEmployee("John Doe", "E001", 20.00, 0, 0, 0);
+        salaryEmployee = new SalaryEmployee("Jane Smith", "E002", 60000, 0, 0, 0);
     }
 
     // ========== Constructor Tests ==========

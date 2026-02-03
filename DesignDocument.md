@@ -9,7 +9,7 @@ If you are using mermaid markup to generate your class diagrams, you may edit th
 
 Include a UML class diagram of your initial design for this assignment. If you are using the mermaid markdown, you may include the code for it here. For a reminder on the mermaid syntax, you may go [here](https://mermaid.js.org/syntax/classDiagram.html)
 
-[UML Draft Link](https://drive.google.com/file/d/1cPBkBl4Q3gqX_vvn7l2gJjwYyN7wRc0R/view?usp=sharing)
+(Given Access Via Google Drive)
 
 
 
@@ -112,7 +112,7 @@ Go through your completed code, and update your class diagram to reflect the fin
 > [!WARNING]
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
 
-
+(Give Access Through Google Drive)
 
 
 
@@ -122,3 +122,15 @@ Go through your completed code, and update your class diagram to reflect the fin
 > The value of reflective writing has been highly researched and documented within computer science, from learning new information to showing higher salaries in the workplace. For this next part, we encourage you to take time, and truly focus on your retrospective.
 
 Take time to reflect on how your design has changed. Write in *prose* (i.e. do not bullet point your answers - it matters in how our brain processes the information). Make sure to include what were some major changes, and why you made them. What did you learn from this process? What would you do differently next time? What was the most challenging part of this process? For most students, it will be a paragraph or two. 
+
+First, when designing this code base, I did not fully read through the assignment before programming, leading me do things in the wrong order.
+Before reading over everything, I tried to make the hourly and salary employee classes. 
+I did this without having a prior design to reference, so I was using prior knowledge of a similar assignment to try and guide my design.
+If I were to do this assignment again, I would make sure that I read through the details so that I do not have to back track. 
+Through this process, I learned the importance of understanding the codebase before diving into programming/extending files. 
+
+Throughout the design process, I found that the relationship between the different classes is what changed the most.
+For instance, before diving into the code, I was using prior knowledge of payrolls from my working experience to guide my design.
+This led me to think that a PayStub object could be used to create a time card.
+Through once, I had a better understanding of the codebase, I learned to not make assumptions about the nature of codebases I am working on based on prior knowledge. 
+Next time, just like for the paragraph above, I would make sure that I read through all the instructions again so that I do not have to back track and I can make the most of my time. 
