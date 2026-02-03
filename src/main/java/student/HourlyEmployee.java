@@ -52,11 +52,19 @@ public class HourlyEmployee implements IEmployee{
 
     /**
      * Method to calculate the gross pay of an employee.
+     * Handles cases with overtime.
+     * Employees make 1.5x pay during overtime.
      * @param hoursWorked number of hours worked by the employee.
      * @return the gross pay of the employee.
      */
     public double calculateGrossPay(double hoursWorked){
-        return this.payRate * hoursWorked;
+        if (hoursWorked <= 40) {
+            return this.payRate * hoursWorked;
+        } else {
+            double regularPay = 40 * this.payRate;
+            double overtimePay = (hoursWorked - 40) * this.payRate * 1.5;
+            return regularPay + overtimePay;
+        }
     }
 
     @Override
