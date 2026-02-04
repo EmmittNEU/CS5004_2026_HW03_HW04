@@ -10,6 +10,7 @@ If you are using mermaid markup to generate your class diagrams, you may edit th
 Include a UML class diagram of your initial design for this assignment. If you are using the mermaid markdown, you may include the code for it here. For a reminder on the mermaid syntax, you may go [here](https://mermaid.js.org/syntax/classDiagram.html)
 
 (Given Access Via Google Drive)
+Check UML folder
 
 
 
@@ -113,6 +114,7 @@ Go through your completed code, and update your class diagram to reflect the fin
 > If you resubmit your assignment for manual grading, this is a section that often needs updating. You should double check with every resubmit to make sure it is up to date.
 
 (Give Access Through Google Drive)
+Check UML Folder
 
 
 
