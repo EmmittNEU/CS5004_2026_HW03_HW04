@@ -92,12 +92,6 @@ public class SalaryEmployee implements IEmployee {
             return null;
         }
 
-        // Handling zero hours
-        if (hoursWorked == 0) {
-            return new PayStub(this.name, 0.0, 0.0,
-                    this.ytdEarnings, this.ytdTaxesPaid);
-        }
-
         // Calculating gross pay
         double grossPay = this.payRate / 24.0;
 
