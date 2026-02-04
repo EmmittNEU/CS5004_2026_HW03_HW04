@@ -4,10 +4,19 @@ package student;
  * A concrete implementation of IPayStub.
  */
 public class PayStub implements IPayStub {
+    /** A string that contains the employee name. */
     private String employeeName;
+
+    /** A double that contains net pay of the employee. */
     private double netPay;
+
+    /** A double that contains taxes paid by the employee. */
     private double taxesPaid;
+
+    /** A double that contains ytd earnings of the employee. */
     private double ytdEarnings;
+
+    /** A double that contains ytd taxes paid of the employee. */
     private double ytdTaxesPaid;
 
     /**

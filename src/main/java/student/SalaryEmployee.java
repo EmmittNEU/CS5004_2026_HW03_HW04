@@ -122,12 +122,12 @@ public class SalaryEmployee implements IEmployee {
     @Override
     public String toCSV() {
         return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
-                getEmployeeType(),    // "Hourly"
-                this.name,            // Employee name
-                this.id,              // Employee ID
-                this.payRate,         // Pay rate
-                this.pretaxDeductions,// Pretax deductions
-                this.ytdEarnings,     // YTD earnings
-                this.ytdTaxesPaid);   // YTD taxes paid
+                getEmployeeType(),     // "Hourly"
+                this.name,             // Employee name
+                this.id,               // Employee ID
+                this.payRate,          // Pay rate
+                this.pretaxDeductions, // Pretax deductions
+                this.ytdEarnings,      // YTD earnings
+                this.ytdTaxesPaid);    // YTD taxes paid
     }
 }

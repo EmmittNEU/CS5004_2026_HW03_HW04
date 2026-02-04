@@ -3,7 +3,7 @@ package student;
 /**
  * A class for hourly employees.
  */
-public class HourlyEmployee implements IEmployee{
+public class HourlyEmployee implements IEmployee {
     /** Holds the name of the Employee. */
     private final String name;
 
@@ -57,7 +57,7 @@ public class HourlyEmployee implements IEmployee{
      * @param hoursWorked number of hours worked by the employee.
      * @return the gross pay of the employee.
      */
-    public double calculateGrossPay(double hoursWorked){
+    public double calculateGrossPay(double hoursWorked) {
         if (hoursWorked <= 40) {
             return this.payRate * hoursWorked;
         } else {
@@ -143,12 +143,12 @@ public class HourlyEmployee implements IEmployee{
     @Override
     public String toCSV() {
         return String.format("%s,%s,%s,%.2f,%.2f,%.2f,%.2f",
-                getEmployeeType(),    // "Hourly"
-                this.name,            // Employee name
-                this.id,              // Employee ID
-                this.payRate,         // Pay rate
-                this.pretaxDeductions,// Pretax deductions
-                this.ytdEarnings,     // YTD earnings
-                this.ytdTaxesPaid);   // YTD taxes paid
+                getEmployeeType(),     // "Hourly"
+                this.name,             // Employee name
+                this.id,               // Employee ID
+                this.payRate,          // Pay rate
+                this.pretaxDeductions, // Pretax deductions
+                this.ytdEarnings,      // YTD earnings
+                this.ytdTaxesPaid);    // YTD taxes paid
     }
 }

@@ -4,7 +4,10 @@ package student;
  * An implementation of ITimeCard.
  */
 public class TimeCard implements ITimeCard {
+    /** A string that contains the Employee ID. */
     private String employeeID;
+
+    /** A string that contains the hours worked on the employee. */
     private double hoursWorked;
 
     /**
