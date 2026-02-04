@@ -67,7 +67,7 @@ public class SalaryEmployee implements IEmployee {
 
     @Override
     public String getEmployeeType() {
-        return "Salary";
+        return "SALARY";
     }
 
     @Override

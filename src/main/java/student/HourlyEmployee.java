@@ -84,7 +84,7 @@ public class HourlyEmployee implements IEmployee{
 
     @Override
     public String getEmployeeType() {
-        return "Hourly";
+        return "HOURLY";
     }
 
     @Override

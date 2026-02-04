@@ -49,10 +49,10 @@ public final class Builder {
             double ytdTaxesPaid = Double.parseDouble(parts[6].trim());
 
             // Create the appropriate employee type based on the first field
-            if (employeeType.equalsIgnoreCase("Hourly")) {
+            if (employeeType.equalsIgnoreCase("HOURLY")) {
                 return new HourlyEmployee(name, id, payRate, ytdEarnings,
                         ytdTaxesPaid, pretaxDeductions);
-            } else if (employeeType.equalsIgnoreCase("Salary")) {
+            } else if (employeeType.equalsIgnoreCase("SALARY")) {
                 return new SalaryEmployee(name, id, payRate, ytdEarnings,
                         ytdTaxesPaid, pretaxDeductions);
             } else {
