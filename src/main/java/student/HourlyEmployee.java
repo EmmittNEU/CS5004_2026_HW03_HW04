@@ -131,7 +131,7 @@ public class HourlyEmployee implements IEmployee{
         this.ytdEarnings += netPay;
         this.ytdTaxesPaid += taxes;
 
-        // ✅ ADD THESE TWO LINES:
+        // Rounding ytdEarnings and ytdTaxesPaid
         this.ytdEarnings = Math.round(this.ytdEarnings * 100.0) / 100.0;
         this.ytdTaxesPaid = Math.round(this.ytdTaxesPaid * 100.0) / 100.0;
 
